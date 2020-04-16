@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Employee List"/></h1>
+                <h2><h:commandLink value="Add Employee" action="addemp.xhtml"/></h2>
+                <h:dataTable value="#{employeeCDIBean.allEmployees}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="EmployeeName"/>
+                        </f:facet>
+                        <h:outputText value="#{item.employeeName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Salary"/>
+                        </f:facet>
+                        <h:outputText value="#{item.salary}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Gender"/>
+                        </f:facet>
+                        <h:outputText value="#{item.gender}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="City"/>
+                        </f:facet>
+                        <h:outputText value="#{item.city}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="DepartmentId"/>
+                        </f:facet>
+                        <h:outputText value="#{item.departmentId.departmentName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Edit"/>
+                        </f:facet>
+                        <h:commandLink action="#{employeeCDIBean.getEmployee(item.id)}" value="Edit"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Delete"/>
+                        </f:facet>
+                        <h:commandLink action="#{employeeCDIBean.deleteEmployee(item.id)}" value="Delete"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Department List"/></h1>
+                <h2><h:commandLink value="Add Department" action="adddept.xhtml"/></h2>
+                <h:dataTable value="#{departmentCDIBean.allDepartments}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="DepartmentName"/>
+                        </f:facet>
+                        <h:outputText value="#{item.departmentName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Edit"/>
+                        </f:facet>
+                        <h:commandLink action="#{departmentCDIBean.getDepartment(item.id)}" value="Edit"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Delete"/>
+                        </f:facet>
+                        <h:commandLink action="#{departmentCDIBean.deleteDepartment(item.id)}" value="Delete"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
